@@ -54,12 +54,11 @@ section {
 }
 
 .header {
-  padding: 20px 0;
+  padding: 10px 20px;
 }
 
 .nav-list {
   display: block;
-  gap: 40px;
 }
 
 .nav-link {
@@ -128,7 +127,6 @@ button[data-start]:focus {
 
 .value {
   color: #2e2f42;
-
   font-family: Montserrat;
   font-size: 40px;
   line-height: 1.2;
@@ -137,7 +135,6 @@ button[data-start]:focus {
 
 .label {
   color: #2e2f42;
-
   font-family: Montserrat;
   font-size: 16px;
   line-height: 1.5;
@@ -149,7 +146,6 @@ button[data-start]:focus {
   display: flex;
   flex-direction: column;
   gap: 30px;
-
   color: #2e2f42;
   font-family: Montserrat;
   font-size: 16px;
@@ -199,7 +195,6 @@ button[type='submit'] {
   justify-content: center;
   align-items: center;
   gap: 10px;
-
   outline: transparent;
   border-radius: 8px;
   background: #4e75ff;
@@ -207,4 +202,6 @@ button[type='submit'] {
 
 button[type='submit']:hover {
   background: #6c8cff;
+}
+.iziToast-after-opened {color: #59A10D;
 }

@@ -37,14 +37,14 @@ button.addEventListener('click', event => {
       iziToast.show({
         message: `✅ Fulfilled promise in ${delay}ms`,
         position: 'topRight',
-        color: 'green',
+        color: '#59A10D',
       });
     })
     .catch(delay => {
       iziToast.show({
         message: `❌ Rejected promise in ${delay}ms`,
         position: 'topRight',
-        color: 'red',
+        color: '#EF4040',
       });
     });
 });
