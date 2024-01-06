@@ -29,7 +29,7 @@ const options = {
       });
     } else {
       button.disabled = false;
-      selectedDate = selectedDates[0].getTime();
+      selectedDate = selectedDates[0];
     }
   },
 };
@@ -38,7 +38,7 @@ const dataPicker = flatpickr(userDate, options);
 
 button.addEventListener('click', () => {
   let countdownInterval = setInterval(() => {
-    let different = selectedDate - new Date().getTime();
+    let different = selectedDate - Date.now();
     let time = convertMs(different);
 
     daysElement.textContent = `${addLeadingZero(time.days)}`;
@@ -51,6 +51,8 @@ button.addEventListener('click', () => {
     if (different <= 0) {
       clearInterval(countdownInterval);
       button.disabled = false;
+    } else {
+      button.disabled = true;
     }
   }, 1000);
 });

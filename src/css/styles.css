@@ -100,6 +100,7 @@ button[data-start] {
   font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.64px;
+  border: none;
 }
 
 button[data-start]:disabled {
@@ -107,7 +108,6 @@ button[data-start]:disabled {
   background: #cfcfcf;
 }
 
-button[data-start]:hover,
 button[data-start]:focus {
   color: #fff;
   background: #6c8cff;
@@ -198,10 +198,9 @@ button[type='submit'] {
   outline: transparent;
   border-radius: 8px;
   background: #4e75ff;
+  border:none
 }
 
 button[type='submit']:hover {
   background: #6c8cff;
-}
-.iziToast-after-opened {color: #59A10D;
 }

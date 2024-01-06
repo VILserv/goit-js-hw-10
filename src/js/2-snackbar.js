@@ -2,49 +2,42 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-const input = document.querySelector('input[name="delay"]');
-const button = document.querySelector('button');
+const form = document.querySelector('.form');
+form.addEventListener('submit', handleSubmit);
 
-button.addEventListener('click', event => {
+function handleSubmit(event) {
   event.preventDefault();
-  const radioButtons = document.querySelectorAll('input[name="state"]');
-  const checkedRadioButtons = Array.from(radioButtons).find(
-    input => input.checked
-  );
-  const inputValue = input.value;
+  const delayInput = document.querySelector('[name="delay"]');
+  const stateInput = document.querySelector('[name="state"]:checked');
 
-  if (inputValue <= 0) {
-    iziToast.show({
-      message: 'Please enter a valid delay in milliseconds.',
-      position: 'topRight',
-      color: 'red',
-    });
-    return;
-  }
+  const delay = parseInt(delayInput.value, 10);
 
   const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (checkedRadioButtons.value === 'fulfilled') {
-        resolve(inputValue);
-      } else {
-        reject(inputValue);
-      }
-    }, inputValue);
+    if (delay <= 0) {
+      reject('Invalid delay value');
+    } else {
+      setTimeout(() => {
+        stateInput.value === 'fulfilled' ? resolve(delay) : reject(delay);
+      }, delay);
+    }
+    event.currentTarget.reset();
   });
 
   promise
-    .then(delay => {
-      iziToast.show({
-        message: `✅ Fulfilled promise in ${delay}ms`,
+    .then(value => {
+      iziToast.success({
         position: 'topRight',
+        title: 'Success!',
+        message: `Fulfilled promise in ${value}ms`,
         color: '#59A10D',
       });
     })
-    .catch(delay => {
-      iziToast.show({
-        message: `❌ Rejected promise in ${delay}ms`,
+    .catch(value => {
+      iziToast.error({
         position: 'topRight',
+        title: 'Error!',
+        message: `Rejected promise in ${value}ms`,
         color: '#EF4040',
       });
     });
-});
+}
